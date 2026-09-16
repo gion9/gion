@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Calculator</title>
+	<style type="text/css">
+	input[type=reset]{
+		background-color: blanchedalmond;
+		height:100px;
+		width:100px;
+		font-size:39px;
+	}
+	input[type=button]{
+		background-color: blanchedalmond;
+		height:100px;
+		width:100px;
+		font-size:39px;
+	}
+	input[type=text]{
+		background-color: blanchedalmond;
+		height:100px;
+		width: 414px;
+		font-size:39px;
+	}
+	td{
+		text-align:center;
+		height:100px;
+		width:100px;
+	}
+	</style>
+
+	<script type="text/javascript">
+		var x="";
+		var y="";
+		var z="";
+
+		function calc(a){
+			var answer = document.getElementById('window');
+
+			if(a=="C"){
+				answer.value="";
+				x=""; y=""; z="";
+				return;
+			}
+
+			if(a=="^2"){
+				answer.value = Number(answer.value) * Number(answer.value);
+				return;
+			}
+
+			if(a=="+" || a=="-" || a=="x" || a=="/" || a=="%" || a=="//"){
+				x = answer.value;
+				z = a;
+				answer.value = "";
+				return;
+			}
+
+			if(a=="="){
+				y = answer.value;
+
+				if (z=="+") answer.value = Number(x)+Number(y);
+				if (z=="-") answer.value = Number(x)-Number(y);
+				if (z=="/") answer.value = Number(x)/Number(y);
+				if (z=="//") answer.value = Math.floor(Number(x)/Number(y));
+				if (z=="x") answer.value = Number(x)*Number(y);
+				if (z=="%") answer.value = Number(x)%Number(y);
+				return;
+			}
+
+			answer.value += a;
+		}
+	</script>
+</head>
+
+<body>
+	<form>
+		<table>
+			<tr>
+				<td colspan="4">
+					<input type="text" value="" id="window" readonly>
+				</td>
+			</tr>
+
+			<tr>
+				<td><input type="button" value="C" onclick="calc('C')"></td>
+				<td><input type="button" value="%" onclick="calc('%')"></td>
+				<td><input type="button" value="//" onclick="calc('//')"></td>
+				<td><input type="button" value="/" onclick="calc('/')"></td>
+			</tr>
+
+			<tr>
+				<td><input type="button" value="7" onclick="calc('7')"></td>
+				<td><input type="button" value="8" onclick="calc('8')"></td>
+				<td><input type="button" value="9" onclick="calc('9')"></td>
+				<td><input type="button" value="x" onclick="calc('x')"></td>
+			</tr>
+
+			<tr>
+				<td><input type="button" value="4" onclick="calc('4')"></td>
+				<td><input type="button" value="5" onclick="calc('5')"></td>
+				<td><input type="button" value="6" onclick="calc('6')"></td>
+				<td><input type="button" value="-" onclick="calc('-')"></td>
+			</tr>
+
+			<tr>
+				<td><input type="button" value="1" onclick="calc('1')"></td>
+				<td><input type="button" value="2" onclick="calc('2')"></td>
+				<td><input type="button" value="3" onclick="calc('3')"></td>
+				<td><input type="button" value="+" onclick="calc('+')"></td>
+			</tr>
+
+			<tr>
+				<td><input type="button" value="^2" onclick="calc('^2')"></td>
+				<td><input type="button" value="0" onclick="calc('0')"></td>
+				<td><input type="button" value="." onclick="calc('.')"></td>
+				<td><input type="button" value="=" onclick="calc('=')"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
